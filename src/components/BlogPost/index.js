@@ -7,7 +7,7 @@ const BlogPost = ({ number, title, body }) => {
   return (
     <div className="bg-pink-200 relative text-dark rounded sm:mx-auto my-5 max-w-md shadow-md mx-2 p-5">
       <PostNumber>{number}</PostNumber>
-      <div className="text-lg mb-3 font-semibold pt-5">{title}</div>
+      <div className="text-lg mb-3 capitalize font-semibold pt-5">{title}</div>
       <div className="text-base">{body}</div>
     </div>
   );
