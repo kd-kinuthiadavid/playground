@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kd-kinuthiadavid/playground.git/static/css/main.a8985c54.chunk.css",
+    "main.js": "/kd-kinuthiadavid/playground.git/static/js/main.1eedd683.chunk.js",
+    "main.js.map": "/kd-kinuthiadavid/playground.git/static/js/main.1eedd683.chunk.js.map",
+    "runtime-main.js": "/kd-kinuthiadavid/playground.git/static/js/runtime-main.fc440b94.js",
+    "runtime-main.js.map": "/kd-kinuthiadavid/playground.git/static/js/runtime-main.fc440b94.js.map",
+    "static/js/2.4a4b9da7.chunk.js": "/kd-kinuthiadavid/playground.git/static/js/2.4a4b9da7.chunk.js",
+    "static/js/2.4a4b9da7.chunk.js.map": "/kd-kinuthiadavid/playground.git/static/js/2.4a4b9da7.chunk.js.map",
+    "index.html": "/kd-kinuthiadavid/playground.git/index.html",
+    "precache-manifest.8496022e8b6c7f7b778b4eac93b14d49.js": "/kd-kinuthiadavid/playground.git/precache-manifest.8496022e8b6c7f7b778b4eac93b14d49.js",
+    "service-worker.js": "/kd-kinuthiadavid/playground.git/service-worker.js",
+    "static/css/main.a8985c54.chunk.css.map": "/kd-kinuthiadavid/playground.git/static/css/main.a8985c54.chunk.css.map",
+    "static/js/2.4a4b9da7.chunk.js.LICENSE.txt": "/kd-kinuthiadavid/playground.git/static/js/2.4a4b9da7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc440b94.js",
+    "static/js/2.4a4b9da7.chunk.js",
+    "static/css/main.a8985c54.chunk.css",
+    "static/js/main.1eedd683.chunk.js"
+  ]
+}
