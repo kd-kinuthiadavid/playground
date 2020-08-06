@@ -57,15 +57,26 @@ const InfiniteScrolling = () => {
   }, []);
 
   const loadMorePosts = () => {
-    setState((state) => ({ ...state, urlPage: urlPage + 1, showBtn: false }));
+    setState((state) => ({
+      ...state,
+      showBtn: false,
+      showLoader: true,
+    }));
+
+    setTimeout(() => {
+      setState((state) => ({
+        ...state,
+        urlPage: urlPage + 1,
+        showLoader: false,
+      }));
+    }, 3000);
   };
 
   return (
     <div>
       {posts.length ? <PostsList postsList={posts} /> : null}
-      {showBtn && posts.length ? (
-        <Btn text="Load More" handleClick={loadMorePosts} />
-      ) : null}
+      {showBtn && <Btn text="Load More" handleClick={loadMorePosts} />}
+      {showLoader && <Loader />}
     </div>
   );
 };
