@@ -5,7 +5,7 @@ export const ProgressLoader = styled.div`
   transition: opacity 0.3s ease-in;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin: 10px 50px;
 `;
 
 export const bounce = keyframes`
