@@ -4,6 +4,7 @@ import axios from "axios";
 import PostsList from "../../components/PostsList";
 import Loader from "../../components/Loader";
 import Btn from "../../components/Button";
+import Alert from "../../components/Alert";
 
 const InfiniteScrolling = () => {
   const [state, setState] = useState({
@@ -12,9 +13,21 @@ const InfiniteScrolling = () => {
     posts: [],
     urlLimit: 4,
     urlPage: 1,
+    showAlert: {
+      status: false,
+      title: "",
+      content: "",
+    },
   });
 
-  const { showBtn, showLoader, posts, urlLimit, urlPage } = state;
+  const {
+    showBtn,
+    showLoader,
+    posts,
+    urlLimit,
+    urlPage,
+    showAlert: { status, title, content },
+  } = state;
 
   useEffect(() => {
     const fetchPosts = async (limit, page) => {
@@ -22,6 +35,18 @@ const InfiniteScrolling = () => {
       let url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`;
       const res = await axios.get(url);
       const data = res.data;
+      // if there're no more posts from the user, notify them
+      if (!data.length) {
+        setState((state) => ({
+          ...state,
+          showAlert: {
+            status: true,
+            title: "You've read them all",
+            content:
+              "You've read all posts that we have for now, please check in later to see if we'll have updated more posts for you",
+          },
+        }));
+      }
       console.log(`*** res **** ${JSON.stringify(data)}`);
       data.length &&
         setState((state) => ({
@@ -73,6 +98,11 @@ const InfiniteScrolling = () => {
 
   return (
     <div>
+      {status && (
+        <div className="fixed z-10">
+          <Alert title={title} content={content} />
+        </div>
+      )}
       {posts.length ? <PostsList postsList={posts} /> : null}
       {showBtn && <Btn text="Load More" handleClick={loadMorePosts} />}
       {showLoader && <Loader />}
