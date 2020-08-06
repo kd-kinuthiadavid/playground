@@ -14,3 +14,7 @@ export const PostNumber = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const Post = styled.div`
+  cursor: pointer;
+`;

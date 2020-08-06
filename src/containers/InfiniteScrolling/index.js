@@ -13,7 +13,7 @@ const InfiniteScrolling = () => {
     showBtn: false,
     showLoader: false,
     posts: [],
-    urlLimit: 4,
+    urlLimit: 10,
     urlPage: 1,
     showAlert: {
       status: false,
