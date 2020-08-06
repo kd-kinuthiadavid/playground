@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import Btn from "../../components/Button";
 import Alert from "../../components/Alert";
 import enums from "../../enums";
+import config from "../../config";
 
 const InfiniteScrolling = () => {
   const [state, setState] = useState({
@@ -38,7 +39,7 @@ const InfiniteScrolling = () => {
   useEffect(() => {
     const fetchPosts = async (limit, page) => {
       setState((state) => ({ ...state, showLoader: true }));
-      let url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`;
+      let url = `${config.apiURL}/posts?_limit=${limit}&_page=${page}`;
       const res = await axios.get(url);
       const data = res.data;
       // if there're no more posts from the user, notify them
