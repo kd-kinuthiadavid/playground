@@ -13,6 +13,8 @@ const InfiniteScrolling = () => {
     showBtn: false,
     showLoader: false,
     posts: [],
+    filteredPosts: [],
+    showFiltered: false,
     urlLimit: 10,
     urlPage: 1,
     showAlert: {
@@ -29,6 +31,8 @@ const InfiniteScrolling = () => {
     urlLimit,
     urlPage,
     showAlert: { status, title, content },
+    filteredPosts,
+    showFiltered,
   } = state;
 
   // destructure enums
@@ -91,6 +95,7 @@ const InfiniteScrolling = () => {
       ...state,
       showBtn: false,
       showLoader: true,
+      showFiltered: false,
     }));
 
     setTimeout(() => {
@@ -102,14 +107,42 @@ const InfiniteScrolling = () => {
     }, 3000);
   };
 
+  const filterPosts = (e) => {
+    const searchTerm = e.target.value.toUpperCase();
+    const filtered = posts.filter(
+      (post) =>
+        post.title.toUpperCase().indexOf(searchTerm) > -1 ||
+        post.body.toUpperCase().indexOf(searchTerm) > -1
+    );
+    setState((state) => ({
+      ...state,
+      showFiltered: true,
+      filteredPosts: filtered,
+    }));
+  };
+
   return (
     <div>
+      <div className="sm:mx-auto max-w-md mt-5 mx-2">
+        <input
+          className="bg-pink-100 appearance-none border-2 border-pink-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-pink-500"
+          id="inline-full-name"
+          type="text"
+          placeholder="Filter posts ..."
+          onChange={filterPosts}
+        />
+      </div>
       {status && (
         <div className="fixed z-10">
           <Alert title={title} content={content} />
         </div>
       )}
-      {posts.length ? <PostsList postsList={posts} /> : null}
+      {showFiltered ? (
+        <PostsList postsList={filteredPosts} />
+      ) : (
+        <PostsList postsList={posts} />
+      )}
+      {/* {posts.length ? <PostsList postsList={posts} /> : null} */}
       {showBtn && <Btn text="Load More" handleClick={loadMorePosts} />}
       {showLoader && <Loader />}
     </div>
