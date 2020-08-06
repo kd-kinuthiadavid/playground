@@ -5,15 +5,16 @@ import PropTypes from "prop-types";
 const StyledBtn = styled.button`
   background-color: palevioletred;
   color: white;
-  min-height: 50px;
+  min-height: 40px;
   height: auto;
-  min-width: 120px;
+  min-width: 150px;
   width: auto;
   text-align: center;
   border-radius: 33px;
   &:focus {
     outline: none;
   }
+  margin-bottom: 15px;
 `;
 
 const ButtonContainer = styled.div`
