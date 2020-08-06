@@ -17,7 +17,6 @@ const InfiniteScrolling = () => {
   const { showBtn, showLoader, posts, urlLimit, urlPage } = state;
 
   useEffect(() => {
-    alert("did you change the url page");
     const fetchPosts = async (limit, page) => {
       setState((state) => ({ ...state, showLoader: true }));
       let url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`;
