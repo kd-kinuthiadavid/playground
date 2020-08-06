@@ -5,6 +5,7 @@ import PostsList from "../../components/PostsList";
 import Loader from "../../components/Loader";
 import Btn from "../../components/Button";
 import Alert from "../../components/Alert";
+import enums from "../../enums";
 
 const InfiniteScrolling = () => {
   const [state, setState] = useState({
@@ -29,6 +30,11 @@ const InfiniteScrolling = () => {
     showAlert: { status, title, content },
   } = state;
 
+  // destructure enums
+  const {
+    messages: { alerts },
+  } = enums;
+
   useEffect(() => {
     const fetchPosts = async (limit, page) => {
       setState((state) => ({ ...state, showLoader: true }));
@@ -41,9 +47,8 @@ const InfiniteScrolling = () => {
           ...state,
           showAlert: {
             status: true,
-            title: "You've read them all",
-            content:
-              "You've read all posts that we have for now, please check in later to see if we'll have updated more posts for you",
+            title: alerts.NO_POSTS_TITLE,
+            content: alerts.NO_POSTS_CONTENT,
           },
         }));
       }
