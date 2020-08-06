@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { PostNumber } from "./styles";
+import { PostNumber, Post } from "./styles";
 
 const BlogPost = ({ number, title, body }) => {
+  const [state, setState] = useState({
+    showBody: false,
+  });
+
+  const { showBody } = state;
+
+  const expandPost = () =>
+    setState((state) => ({ ...state, showBody: !showBody }));
   return (
-    <div className="bg-pink-200 relative text-dark rounded sm:mx-auto my-5 max-w-md shadow-md mx-2 p-5">
+    <Post
+      className="bg-pink-200 relative text-dark rounded sm:mx-auto my-5 max-w-md shadow-md mx-2 p-5"
+      onClick={expandPost}
+    >
       <PostNumber>{number}</PostNumber>
       <div className="text-lg mb-3 capitalize font-semibold pt-5">{title}</div>
-      <div className="text-base">{body}</div>
-    </div>
+      {showBody && <div className="text-base">{body}</div>}
+    </Post>
   );
 };
 
